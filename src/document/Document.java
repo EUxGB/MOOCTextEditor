@@ -22,7 +22,7 @@ public abstract class Document {
 		this.text = text;
 	}
 	
-	/** Returns the tokens that match the regex pattern from the document 
+	/** Returns the tokens that match the regex pattern from the document
 	 * text string.
 	 * @param pattern A regular expression string specifying the 
 	 *   token pattern desired
@@ -64,10 +64,20 @@ public abstract class Document {
 	 */
 	protected int countSyllables(String word)
 	{
-		// TODO: Implement this method so that you can call it from the 
-	    // getNumSyllables method in BasicDocument (module 2) and 
-	    // EfficientDocument (module 3).
-	    return 0;
+
+		Pattern tokSplitter = Pattern.compile("[eyuioaEYUIOA]+|[^eyuioaEYUIOA]+$");
+		Matcher m = tokSplitter.matcher(word);
+		int matchCount =0;
+		while(m.find()){
+			matchCount++;
+		}
+		return matchCount;
+
+
+
+		// TODO: Implement this method so that you can call it from the
+		// getNumSyllables method in BasicDocument (module 2) and
+		// EfficientDocument (module 3).
 	}
 	
 	/** A method for testing

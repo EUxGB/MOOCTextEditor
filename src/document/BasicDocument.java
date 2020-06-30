@@ -34,9 +34,8 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumWords()
 	{
-		//TODO: Implement this method in week 2 according to the comments above.  
-		// See the Module 2 support videos if you need help.
-	    return 0;
+		List<String> listWords = getTokens("[a-zA-Z’]+");
+	    return listWords.size();
 	}
 	
 	/**
@@ -54,16 +53,17 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumSentences()
 	{
-	    //TODO: Implement this method.  See the Module 2 support videos 
-        // if you need help.
-        return 0;
+		List<String> listSentences = getTokens("[^.?!]+");
+		return listSentences.size();
+
+
 	}
 	
 	/**
-	 * Get the total number of syllables in the document (the stored text). 
+	 * Get the total number of syllables in the document (the stored text).
 	 * To count the number of syllables in a word, it uses the following rules:
-	 *       Each contiguous sequence of one or more vowels is a syllable, 
-	 *       with the following exception: a lone "e" at the end of a word 
+	 *       Each contiguous sequence of one or more vowels is a syllable,
+	 *       with the following exception: a lone "e" at the end of a word
 	 *       is not considered a syllable unless the word has no other syllables. 
 	 *       You should consider y a vowel.
 	 *       
@@ -75,13 +75,21 @@ public class BasicDocument extends Document
 	 */
 	@Override
 	public int getNumSyllables()
-	{
-	    //TODO: Implement this method in week 2.  See the Module 2 support videos 
+	{	int i =0;
+		List<String> listWords = getTokens("[a-zA-Z’]+");
+		for (String words : listWords) {
+
+			i=i+countSyllables(words);
+
+		}
+		return i;
+
+
+		//TODO: Implement this method in week 2.  See the Module 2 support videos
         // if you need help.  And note that there is no need to use a regular
 		// expression for the syllable counting.  We recommend you implement 
 		// the helper function countSyllables in Document.java using a loop, 
 		// and then call it here on each word.
-        return 0;
 	}
 	
 	
