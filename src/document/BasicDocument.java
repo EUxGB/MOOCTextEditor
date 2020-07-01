@@ -76,7 +76,7 @@ public class BasicDocument extends Document
 	@Override
 	public int getNumSyllables()
 	{	int i =0;
-		List<String> listWords = getTokens("[a-zA-Z’]+");
+		List<String> listWords = getTokens("[a-zA-Z]+");
 		for (String words : listWords) {
 
 			i=i+countSyllables(words);

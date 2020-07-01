@@ -65,13 +65,16 @@ public abstract class Document {
 	protected int countSyllables(String word)
 	{
 
-		Pattern tokSplitter = Pattern.compile("[eyuioaEYUIOA]+|[^eyuioaEYUIOA]+$");
-		Matcher m = tokSplitter.matcher(word);
-		int matchCount =0;
-		while(m.find()){
-			matchCount++;
-		}
-		return matchCount;
+        Pattern tokSplitter = Pattern.compile("[eyuioaEYUIOA]+");
+        Matcher m = tokSplitter.matcher(word);
+        int matchCount =0;
+        while(m.find()){
+            matchCount++;
+        }
+        tokSplitter = Pattern.compile("[^aeyuio]e$");
+        m = tokSplitter.matcher(word);
+        if (m.find()&matchCount>1) matchCount--;
+        return matchCount;
 
 
 
